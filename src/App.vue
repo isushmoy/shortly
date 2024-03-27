@@ -8,23 +8,19 @@ import navbar from './components/nav.vue'
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
   </header>
 
-  <main class="container">
+  <main class="container" data-bs-theme="dark">
     <div class="top">
-      <h1 class="text-4xl font-bold">Shortly</h1>
-      <nav>
         <navbar />
-        Features Pricing Resources
-        <hr />
-        Login Sign Up
-      </nav>
-      <img src="./assets/images/illustration-working.svg" alt="" />
+      <img class="img-fluid mt-2" src="./assets/images/illustration-working.svg" alt="" />
 
-      <h1>More than just shorter links</h1>
-      <p>
+      <h1 class="fw-bold text-center mt-5">More than just shorter links</h1>
+      <p class="text-center">
         Build your brand’s recognition and get detailed insights on how your
         links are performing.
       </p>
-      <button>Get Started</button>
+      <div class="middle-button d-flex justify-content-center">
+        <button class="btn cyan-button rounded-pill px-4 mb-5">Get Started</button>
+      </div>
     </div>
     <div class="middle">
       <div class="bg-shorten">
@@ -108,6 +104,9 @@ import navbar from './components/nav.vue'
 }
 .bg-shorten{
   background-image: url(./assets/images/bg-shorten-mobile.svg);
+}
+.cyan-button{
+  background-color: hsl(180, 66%, 49%);
 }
 
 </style>
