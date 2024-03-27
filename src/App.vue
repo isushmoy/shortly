@@ -1,4 +1,6 @@
 <script setup>
+import navbar from './components/nav.vue'
+
 </script>
 
 <template>
@@ -6,101 +8,106 @@
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
   </header>
 
-  <main>
+  <main class="container">
+    <div class="top">
+      <h1 class="text-4xl font-bold">Shortly</h1>
+      <nav>
+        <navbar />
+        Features Pricing Resources
+        <hr />
+        Login Sign Up
+      </nav>
+      <img src="./assets/images/illustration-working.svg" alt="" />
 
-Features
-Pricing
-Resources
+      <h1>More than just shorter links</h1>
+      <p>
+        Build your brand’s recognition and get detailed insights on how your
+        links are performing.
+      </p>
+      <button>Get Started</button>
+    </div>
+    <div class="middle">
+      <div class="bg-shorten">
+        <form action="">
+          <input type="text" placeholder="Shorten a link here..." />
+          <button>Shorten It!</button>
+        </form>
+      </div>
+      <h3>Advanced Statistics</h3>
+      <p>
+        Track how your links are performing across the web with our advanced
+        statistics dashboard.
+      </p>
+      <div class="brand-recognition">
+        <img src="./assets/images/icon-brand-recognition.svg" alt="">
+        <h4>Brand Recognition</h4>
+        <p>
+          Boost your brand recognition with each click. Generic links don’t mean a
+          thing. Branded links help instil confidence in your content.
+        </p>
+      </div>
+      <div class="detailed-records">
+        <img src="./assets/images/icon-detailed-records.svg" alt="">
+        <h4>Detailed Records</h4>
+        <p>
+          Gain insights into who is clicking your links. Knowing when and where
+          people engage with your content helps inform better decisions.
+        </p>
+      </div>
+      <div class="fully-customizable">
+        <img src="./assets/images/icon-fully-customizable.svg" alt="">
+        <h4>Fully Customizable</h4>
+        <p>
+          Improve brand awareness and content discoverability through customizable
+          links, supercharging audience engagement.
+        </p>
+      </div>
+    </div>
+    <div class="boost">
+      <h2>Boost your links today</h2>
+      <button>Get Started</button>
+    </div>
 
-Login
-Sign Up
+    <div class="bottom">
+      <h2>Shortly</h2>
 
-More than just shorter links
+      <h4 href="">Features</h4>
 
-Build your brand’s recognition and get detailed insights 
-on how your links are performing.
+      <a href=""> Link Shortening </a>
+      <a href=""> Branded Links </a>
+      <a href=""> Analytics </a>
 
-Get Started
+      <h4>Resources</h4>
 
-Shorten a link here...
+      <a href=""> Blog </a>
+      <a href=""> Developers </a>
+      <a href=""> Support </a>
 
-Shorten It!
+      <h4>Company</h4>
 
-Advanced Statistics
-
-Track how your links are performing across the web with our 
-advanced statistics dashboard.
-
-Brand Recognition
-
-Boost your brand recognition with each click. Generic links don’t 
-mean a thing. Branded links help instil confidence in your content.
-
-Detailed Records
-
-Gain insights into who is clicking your links. Knowing when and where 
-people engage with your content helps inform better decisions.
-
-Fully Customizable
-
-Improve brand awareness and content discoverability through customizable 
-links, supercharging audience engagement.
-
-Boost your links today
-
-Get Started
-
-Features
-
-Link Shortening
-Branded Links
-Analytics
-
-Resources
-
-Blog
-Developers
-Support
-
-Company
-
-About
-Our Team
-Careers
-Contact
-
-<div class="attribution">
-  Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-  Coded by <a href="#">Your Name Here</a>.
-</div>
-</main>
+      <a href=""> About </a>
+      <a href=""> Our Team </a>
+      <a href=""> Careers </a>
+      <a href=""> Contact </a>
+      <div class="social-media">
+        <img src="./assets/images/icon-facebook.svg" alt="">
+        <img src="./assets/images/icon-twitter.svg" alt="">
+        <img src="./assets/images/icon-pinterest.svg" alt="">
+        <img src="./assets/images/icon-instagram.svg" alt="">
+      </div>
+    </div>
+  </main>
+  <div class="attribution">
+    Coded by <a href="#">Sushmoy</a>.
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.boost {
+  background-image: url(./assets/images/bg-boost-mobile.svg);
+}
+.bg-shorten{
+  background-image: url(./assets/images/bg-shorten-mobile.svg);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
