@@ -4,7 +4,10 @@
 <template>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Shortly</a>
+        <a href="#">
+          <img class="navbar-brand" src="../assets/images/logo.svg" alt="logo">
+        </a>
+        <!-- <a class="navbar-brand" href="#">Shortly</a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,4 +52,11 @@
 .cyan-button{
   background-color: hsl(180, 66%, 49%);
 }
+/* .cyan-button:active {
+  background-color: hsl(257, 27%, 26%);
+} */
+.cyan-button:hover {
+  background-color: hsl(180, 66%, 39%);
+}
+  
 </style>

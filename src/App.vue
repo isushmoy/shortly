@@ -1,16 +1,16 @@
 <script setup>
 import navbar from "./components/nav.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 const shortUrl = ref("");
 const longUrl = ref("");
 const isInvalid = ref(false);
-const savedUrls = ref(JSON.parse(localStorage.getItem('savedUrls')) || []);
-const reversedUrls = ref(savedUrls.value.reverse());
+const savedUrls = ref("");
+const copied = ref(false);
 
-// onMounted(() => {
-//   reversedUrls.value = savedUrls.value.reverse();
-// })
+onMounted(() => {
+  savedUrls.value = JSON.parse(localStorage.getItem("savedUrls")) || [];
+});
 
 async function shortenUrl() {
   if (longUrl.value.trim() === "") {
@@ -25,7 +25,10 @@ async function shortenUrl() {
           shortUrl.value = JSON.parse(xhr.responseText);
           console.log(shortUrl.value);
           // Save shortUrl and longUrl as separate items
-          savedUrls.value.push({ shortUrl: shortUrl.value.result_url, longUrl: longUrl.value });
+          savedUrls.value.unshift({
+            shortUrl: shortUrl.value.result_url,
+            longUrl: longUrl.value,
+          });
           localStorage.setItem("savedUrls", JSON.stringify(savedUrls.value));
         } else {
           console.error("Error:", xhr.status);
@@ -37,16 +40,16 @@ async function shortenUrl() {
   }
 }
 
-async function copyUrl(index){
+async function copyUrl(index) {
   // const shortUrl = savedUrls.value[index].shortUrl;
   navigator.clipboard.writeText(index);
+  copied.value = index;
 }
 
-// async function clearItems(){
-//   savedUrls.value = [];
-//   localStorage.removeItem('savedUrls');
-// }
-
+async function clearItems() {
+  savedUrls.value = [];
+  localStorage.removeItem("savedUrls");
+}
 </script>
 
 <template>
@@ -54,15 +57,15 @@ async function copyUrl(index){
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
   </header>
 
-  <main class="container" data-bs-theme="dark">
-    <div class="top">
+  <main class="" data-bs-theme="auto">
+    <div class="top container p-3" style="margin-bottom: 5rem;">
       <navbar />
       <img
         class="img-fluid mt-2"
         src="./assets/images/illustration-working.svg"
         alt=""
       />
-      <h1 class="fw-bold text-center mt-5">More than just shorter links</h1>
+      <h1 class="fw-bolder text-center mt-5">More than just shorter links</h1>
       <p class="text-center">
         Build your brand’s recognition and get detailed insights on how your
         links are performing.
@@ -73,134 +76,270 @@ async function copyUrl(index){
         </button>
       </div>
     </div>
-    <div class="middle">
-      <div class="bg-shorten card text-bg-auto mb-3" style="max-width: 18rem">
+    <div class="middle p-3">
+      <div class="bg-shorten card mb-3" style="background-color: #3a3053; margin-top: -5.8rem;">
         <img
           src="./assets/images/bg-shorten-mobile.svg"
-          class="card-img img-fluid"
+          class="card-img d-block d-xl-none"
           alt="bg-shorten-mobile"
+          style="max-height: 9.5rem"
         />
-        <div class="card-img-overlay">
-          <form action="" class="row p-2" novalidate>
+        <img
+          src="./assets/images/bg-shorten-desktop.svg"
+          class="card-img d-none d-xl-block"
+          alt="bg-shorten-desktop"
+          style="max-height: 10rem"
+        />
+        <div class="card-img-overlay p-4">
+          <form action="" class="row px-1 px-sm-2">
             <input
-              class="form-control"
+              class="form-control mt-xl-1"
               :class="{ 'is-invalid': isInvalid }"
               v-model="longUrl"
               type="text"
               placeholder="Shorten a link here..."
               required
             />
-
-            <div class="invalid-feedback mb--1">Please add a link</div>
+            <div class="invalid-feedback">Please add a link</div>
             <button class="btn cyan-button mt-4" @click.prevent="shortenUrl()">
               Shorten It!
             </button>
           </form>
         </div>
       </div>
-      <button class="btn btn-danger" v-if="shortUrl.result_url" @click="clearItems()"> Clear</button>
-      <li v-for="(url, index) in reversedUrls" :key="index" style="list-style-type: none;">
-        <div class="result mb-3" v-if="shortUrl.result_url">
+      <div class="d-flex justify-content-end">
+        <button
+          class="btn cyan-color mb-3"
+          v-if="savedUrls.length !== 0"
+          @click="clearItems()"
+        >
+          <i class="fa-solid fa-square-minus"></i>
+          <i> Clean</i>
+        </button>
+      </div>
+      <li
+        v-for="(url, index) in savedUrls"
+        :key="index"
+        style="list-style-type: none"
+      >
+        <div class="result mb-3">
           <div class="card">
             <div class="card-header">{{ url.longUrl }}</div>
             <div class="card-body">
-              <p class="card-text">
+              <a class="card-text cyan-" :href="url.shortUrl" target="_blank">
                 {{ url.shortUrl }}
-              </p>
-              <button class="btn cyan-button col-12" @click="copyUrl(url.shortUrl)">Copy</button>
+              </a>
+              <button
+                class="btn cyan-button col-12 mt-3"
+                @click="copyUrl(url.shortUrl)" 
+              >
+                Copy
+              </button>
             </div>
           </div>
         </div>
       </li>
-      <div class="statistics mt-5 mb-4 d-flex flex-column align-items-center">
+      <div class="statistics mt-5 mb-5 d-flex flex-column align-items-center">
         <h3>Advanced Statistics</h3>
         <p class="text-center" style="max-width: 30rem">
           Track how your links are performing across the web with our advanced
           statistics dashboard.
         </p>
       </div>
-      <div class="brand-recognition">
-        <div class="circle">
-          <img src="./assets/images/icon-brand-recognition.svg" alt="" />
+      <div class="statistics d-flex flex-column align-items-center">
+        <div
+          class="brand-recognition card text-center d-flex align-items-center"
+          style="width: 18rem"
+        >
+          <div class="circle" style="margin-top: -2rem">
+            <img src="./assets/images/icon-brand-recognition.svg" alt="" />
+          </div>
+          <div class="card-body mb-2">
+            <h5 class="card-title">Brand Recognition</h5>
+            <p class="card-text">
+              Boost your brand recognition with each click. Generic links don’t
+              mean a thing. Branded links help instil confidence in your content.
+            </p>
+          </div>
         </div>
-        <h4>Brand Recognition</h4>
-        <p>
-          Boost your brand recognition with each click. Generic links don’t mean
-          a thing. Branded links help instil confidence in your content.
-        </p>
-      </div>
-      <div class="detailed-records">
-        <div class="circle">
-          <img src="./assets/images/icon-detailed-records.svg" alt="" />
+        <div class="vertical-line"></div>
+        <div
+          class="detailed-records card text-center d-flex align-items-center"
+          style="width: 18rem"
+        >
+          <div class="circle" style="margin-top: -2rem">
+            <img src="./assets/images/icon-detailed-records.svg" alt="" />
+          </div>
+          <div class="card-body mb-2">
+            <h5 class="card-title">Detailed Records</h5>
+            <p class="card-text">
+              Gain insights into who is clicking your links. Knowing when and
+              where people engage with your content helps inform better decisions.
+            </p>
+          </div>
         </div>
-        <h4>Detailed Records</h4>
-        <p>
-          Gain insights into who is clicking your links. Knowing when and where
-          people engage with your content helps inform better decisions.
-        </p>
-      </div>
-      <div class="fully-customizable">
-        <div class="circle">
-          <img src="./assets/images/icon-fully-customizable.svg" alt="" />
+        <div class="vertical-line"></div>
+        <div
+          class="fully-customizable mb-5 card text-center d-flex align-items-center"
+          style="width: 18rem"
+        >
+          <div class="circle" style="margin-top: -2rem">
+            <img src="./assets/images/icon-fully-customizable.svg" alt="" />
+          </div>
+          <div class="card-body mb-2">
+            <h5 class="card-title">Fully Customizable</h5>
+            <p class="card-text">
+              Improve brand awareness and content discoverability through
+              customizable links, supercharging audience engagement.
+            </p>
+          </div>
         </div>
-        <h4>Fully Customizable</h4>
-        <p>
-          Improve brand awareness and content discoverability through
-          customizable links, supercharging audience engagement.
-        </p>
-      </div>
-    </div>
-    <div class="boost">
-      <h2>Boost your links today</h2>
-      <button>Get Started</button>
-    </div>
-
-    <div class="bottom">
-      <h2>Shortly</h2>
-
-      <h4 href="">Features</h4>
-
-      <a href=""> Link Shortening </a>
-      <a href=""> Branded Links </a>
-      <a href=""> Analytics </a>
-
-      <h4>Resources</h4>
-
-      <a href=""> Blog </a>
-      <a href=""> Developers </a>
-      <a href=""> Support </a>
-
-      <h4>Company</h4>
-
-      <a href=""> About </a>
-      <a href=""> Our Team </a>
-      <a href=""> Careers </a>
-      <a href=""> Contact </a>
-      <div class="social-media">
-        <img src="./assets/images/icon-facebook.svg" alt="" />
-        <img src="./assets/images/icon-twitter.svg" alt="" />
-        <img src="./assets/images/icon-pinterest.svg" alt="" />
-        <img src="./assets/images/icon-instagram.svg" alt="" />
       </div>
     </div>
   </main>
-  <div class="attribution">Coded by <a href="#">Sushmoy</a>.</div>
+    <div class="boost d-flex flex-column align-items-center justify-content-center">
+      <h2 class="mt-5">Boost your links today</h2>
+      <button class="btn cyan-button rounded-pill px-4 mb-5">Get Started</button>
+    </div>
+    <div class="bottom text-center">
+      <h2 class="pt-5 pb-4 fw-bold">Shortly</h2>
+      <div class="features mb-4">
+        <h4 href="">Features</h4>
+  
+        <a href=""> Link Shortening </a>
+        <a href=""> Branded Links </a>
+        <a href=""> Analytics </a>
+      </div>
+      <div class="resources mb-4">
+        <h4>Resources</h4>
+  
+        <a href=""> Blog </a>
+        <a href=""> Developers </a>
+        <a href=""> Support </a>
+      </div>
+      <div class="company mb-5">
+        <h4>Company</h4>
+  
+        <a href=""> About </a>
+        <a href=""> Our Team </a>
+        <a href=""> Careers </a>
+        <a href=""> Contact </a>
+      </div>
+      <div class="social-media">
+        <a href="#">
+          <i class="fa-brands fa-facebook fa-xl"></i>
+        </a>
+        <a href="#">
+          <i class="fa-brands fa-twitter fa-xl"></i>
+        </a>
+        <a href="#">
+          <i class="fa-brands fa-pinterest fa-xl"></i>
+        </a>
+        <a href="#">
+          <i class="fa-brands fa-instagram fa-xl"></i>
+        </a>
+      </div>
+    </div>
+    <footer class="attribution text-center text-secondary p-4" style="background-color: hsl(260, 8%, 14%)">Coded by <a href="#">Sushmoy</a>.</footer>
 </template>
 
 <style scoped>
-.boost {
-  background-image: url(./assets/images/bg-boost-mobile.svg);
+
+/* copied function
+.copied{
+  background-color: hsl(257, 27%, 26%);
 }
 
+:style="{ backgroundColor: copiedIndex === index ? 'hsl(257, 27%, 26%)' : 'hsl(180, 66%, 49%)' }" */
+
+h1{
+  font-size: 2rem;
+}
+
+/* statistics */
+.statistics .card-title{
+  margin-top: -1rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.statistics p {
+  font-size: smaller;
+}
+
+.statistics .card {
+  padding: 0 0.5rem;
+}
+
+.middle{
+  background-color: #f0f1f6;
+  /* padding: 4rem; */
+}
+
+/* social media */
+.social-media a{
+  width: max-content;
+  display: inline-block !important;
+}
+
+/* boost */
+.boost {
+  background-image: url(./assets/images/bg-boost-desktop.svg);
+  background-size: cover;
+  background-color: #3a3053;
+  color: white;
+}
+.vertical-line{
+  border: 0.3rem hsl(180, 66%, 49%) solid;
+  height: 5rem;
+}
+
+/* bottom */
+.bottom, .bottom h4{
+  background-color: hsl(260, 8%, 14%);
+  color: #fff;
+  font-size: 1rem;
+}
+.bottom a{
+  color: hsl(257, 7%, 63%);
+  display: block;
+}
+.bottom i{
+  margin: 0.7rem;
+}
+
+/* colors */
+
+p{
+  color: hsl(257, 7%, 63%);
+}
+.grayish-violet{
+  background-color: hsl(255, 11%, 22%);
+}
+.cyan-color{
+  color: hsl(180, 66%, 49%);
+}
+.cyan-color:hover{
+  color: hsl(180, 66%, 39%);
+}
 .cyan-button {
   background-color: hsl(180, 66%, 49%);
+  color: white;
 }
-
+.cyan-button:hover{
+  background-color: hsl(180, 66%, 39%);
+}
+.cyan-button:active {
+  background-color: hsl(257, 27%, 26%);
+}
 .circle {
   background-color: hsl(257, 27%, 26%);
   max-width: fit-content;
   padding: 1rem;
   border-radius: 50%;
   margin-bottom: 2rem;
+}
+.invalid-feedback {
+  margin-bottom: -1rem;
 }
 </style>
