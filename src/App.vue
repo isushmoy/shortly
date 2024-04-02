@@ -124,7 +124,7 @@ async function clearItems() {
                 <button
                   class="btn cyan-button mt-3 mt-lg-0 mb-2"
                   @click.prevent="shortenUrl()"
-                  style="height: 2.4rem;"
+                  style="height: 2.4rem"
                 >
                   Shorten It!
                 </button>
@@ -166,7 +166,10 @@ async function clearItems() {
           </div>
         </div>
       </li>
-      <div class="statistics mt-5 mb-5 mb-lg-0 d-flex flex-column align-items-center" style="padding-top: 2.5rem;">
+      <div
+        class="statistics mt-5 mb-5 mb-lg-0 d-flex flex-column align-items-center"
+        style="padding-top: 2.5rem"
+      >
         <h3 class="fw-bold">Advanced Statistics</h3>
         <p class="text-center" style="max-width: 30rem">
           Track how your links are performing across the web with our advanced
@@ -212,7 +215,7 @@ async function clearItems() {
           class="fully-customizable mb-5 mb-lg-0 card text-center text-lg-start d-flex align-items-center align-items-lg-start"
         >
           <div class="circle ms-lg-3" style="margin-top: -2rem">
-            <img src="./assets/images/icon-fully-customizable.svg" alt=""/>
+            <img src="./assets/images/icon-fully-customizable.svg" alt="" />
           </div>
           <div class="card-body mb-2">
             <h5 class="card-title">Fully Customizable</h5>
@@ -232,25 +235,29 @@ async function clearItems() {
     <button class="btn cyan-button rounded-pill px-4 mb-5">Get Started</button>
   </div>
   <div class="bottom">
-    <div class="container text-center text-lg-start d-lg-flex justify-content-lg-between p-lg-5">
-      <h2 class="pt-5 pt-lg-3 pe-lg-5 pb-4 fw-bold">Shortly</h2>
+    <div
+      class="container text-center text-lg-start d-lg-flex justify-content-lg-between p-lg-5"
+    >
+      <h2 class="pt-5 pt-lg-3 pe-lg-5 pb-4 fw-bold">
+        <a href="#" class="text-light">Shortly</a>
+      </h2>
       <div class="features mb-4 p-lg-3">
         <h4 href="">Features</h4>
-  
+
         <a href=""> Link Shortening </a>
         <a href=""> Branded Links </a>
         <a href=""> Analytics </a>
       </div>
       <div class="resources mb-4 pt-lg-3 pe-lg-3">
         <h4>Resources</h4>
-  
+
         <a href=""> Blog </a>
         <a href=""> Developers </a>
         <a href=""> Support </a>
       </div>
       <div class="company mb-5 pt-lg-3 pe-lg-3">
         <h4>Company</h4>
-  
+
         <a href=""> About </a>
         <a href=""> Our Team </a>
         <a href=""> Careers </a>
@@ -258,7 +265,7 @@ async function clearItems() {
       </div>
       <div class="social-media pt-lg-3">
         <a href="#">
-          <i class="fa-brands fa-facebook fa-xl"></i>
+          <i class="fa-brands fa-facebook fa-xl red"></i>
         </a>
         <a href="#">
           <i class="fa-brands fa-twitter fa-xl"></i>
@@ -276,7 +283,7 @@ async function clearItems() {
     class="attribution text-center text-secondary p-4"
     style="background-color: hsl(260, 8%, 14%)"
   >
-    Coded by <a href="#">Sushmoy</a>.
+    Coded by <a href="https://github.com/SushCod3">Sushmoy</a>.
   </footer>
 </template>
 
@@ -290,22 +297,22 @@ async function clearItems() {
     transform: rotate(90deg);
     height: 37rem !important;
   }
-  .statistics{
+  .statistics {
     margin-top: -5rem;
   }
-  .statistics .card{
+  .statistics .card {
     width: 20rem !important;
     height: 14.5rem;
     z-index: 1000;
   }
 
-  .brand-recognition{
+  .brand-recognition {
     margin-top: -3rem;
   }
-  .detailed-records{
+  .detailed-records {
     margin-top: 2rem;
   }
-  .fully-customizable{
+  .fully-customizable {
     margin-top: 5rem;
   }
   /* .bottom{
@@ -315,14 +322,13 @@ async function clearItems() {
     padding: 2rem;
     
   } */
-
 }
 
-.statistics .card{
-    width: 19rem !important;
-    height: 14.5rem;
-    z-index: 1000;
-  }
+.statistics .card {
+  width: 19rem !important;
+  height: 14.5rem;
+  z-index: 1000;
+}
 
 /* copied function
 .copied{
@@ -374,18 +380,30 @@ async function clearItems() {
 }
 
 /* bottom */
+
+.bottom .text-light {
+  font-weight: 600;
+}
 .bottom,
 .bottom h4 {
   background-color: hsl(260, 8%, 14%);
   color: #fff;
   font-size: 1rem;
 }
+
+.bottom h4 {
+  font-weight: 600;
+}
+
 .bottom a {
   color: hsl(257, 7%, 63%);
   display: block;
 }
+.bottom a:hover {
+  background-color: transparent;
+}
 .bottom i {
-  margin: 0.7rem;
+  margin: 0.6rem;
 }
 
 /* colors */
@@ -421,5 +439,13 @@ p {
 }
 .invalid-feedback {
   margin-bottom: -1rem;
+}
+
+/* social media */
+.social-media i:hover {
+  color: hsl(180, 66%, 49%);
+}
+a:hover {
+  color: hsl(180, 66%, 49%);
 }
 </style>

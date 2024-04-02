@@ -13,13 +13,14 @@
         data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
-        aria-label="Toggle navigation" style="border: none;"
+        aria-label="Toggle navigation"
+        style="border: none"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse hide navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Features</a>
           </li>
           <li class="nav-item">
@@ -53,6 +54,10 @@
 </template>
 
 <style scoped>
+.navbar a:hover {
+  color: #000 !important;
+  background-color: transparent;
+}
 .navbar-brand {
   font-size: 2rem;
   font-weight: 700;
@@ -74,21 +79,24 @@
   background-color: hsl(180, 66%, 39%);
 }
 
-@media (max-width: 62rem){
+@media (max-width: 62rem) {
   .navbar-collapse {
-  background-color: hsl(257, 27%, 26%) !important;
-  text-align: center;
-  border-radius: 0.5rem;
-  padding: 2rem;
-  margin: 1rem;
+    background-color: hsl(257, 27%, 26%) !important;
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin: 1rem;
   }
-.navbar .nav-link {
-  color: #fff !important;
-}
-.bottom-ul .nav-link:not(button){
-  margin-bottom: 0.5rem;
-}
-/* .bottom-ul .nav-item button{
+  .navbar .nav-link {
+    color: #fff !important;
+  }
+  .bottom-ul .nav-link:not(button) {
+    margin-bottom: 0.5rem;
+  }
+  .navbar a:hover {
+    color: hsl(180, 66%, 49%) !important;
+  }
+  /* .bottom-ul .nav-item button{
   padding-right: 10rem;
 } */
 }
