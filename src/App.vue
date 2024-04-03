@@ -35,7 +35,7 @@ async function shortenUrl() {
         }
       }
     };
-    xhr.send("url=" + encodeURIComponent(longUrl.value));
+    xhr.send("url=" + "https://corsproxy.io/?" + encodeURIComponent(longUrl.value));
     isInvalid.value = false;
   }
 }
