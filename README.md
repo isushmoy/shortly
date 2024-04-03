@@ -41,6 +41,7 @@ Live Site: [Shortly](https://sushcod3.github.io/shortly/)
 5. When confused, adding an outer div container can help organize layout.
 6. `JSON.parse()` converts strings into JavaScript objects, often used for API responses.
 7. In Vue.js, `computed` properties reactively update based on changes, while `watch` is used for side effects.
+8. Utilized CORS proxy (https://corsproxy.io/) to bypass CORS restrictions when accessing the public UI of CleanURL.
 
 ### Acknowledgments
 
