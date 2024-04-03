@@ -17,7 +17,7 @@ async function shortenUrl() {
     isInvalid.value = true;
   } else {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://cleanuri.com/api/v1/shorten");
+    xhr.open("POST", "https://corsproxy.io/?" + "https://cleanuri.com/api/v1/shorten");
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -35,7 +35,7 @@ async function shortenUrl() {
         }
       }
     };
-    xhr.send("url=" + "https://corsproxy.io/?" + encodeURIComponent(longUrl.value));
+    xhr.send("url=" + encodeURIComponent(longUrl.value));
     isInvalid.value = false;
   }
 }
