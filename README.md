@@ -3,11 +3,12 @@
 Welcome to the Shortly!
 This web application allows users to easily shorten long URLs and conveniently copy the shortened URL. Additionally, the app provides the functionality to directly open the shortened URL for testing purposes.
 
+Live Site: [Shortly](https://your-live-site-url.com)
+
 ## Table of contents
 
 - [Features](#features)
 - [Screenshot](#screenshot)
-- [Links](#links)
 - [Technologies Used](#technologies-used)
 - [Lessons Learned](#lessons-learned)
 - [Acknowledgments](#acknowledgments)
@@ -24,10 +25,6 @@ This web application allows users to easily shorten long URLs and conveniently c
 ### Screenshot
 
 ![Desktop Screenshot](./public/screenshot-desktop.jpeg)
-
-### Links
-
-- Live Site: [Shortly](https://your-live-site-url.com)
 
 ### Technologies Used
 
