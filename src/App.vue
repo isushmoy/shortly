@@ -17,7 +17,7 @@ async function shortenUrl() {
     isInvalid.value = true;
   } else {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://cleanuri.com/api/v1/shorten", true);
+    xhr.open("POST", "https://cleanuri.com/api/v1/shorten");
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
