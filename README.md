@@ -23,7 +23,7 @@ This web application allows users to easily shorten long URLs and conveniently c
 
 ### Screenshot
 
-![Desktop Screenshot](./public/screenshot-desktop.jpeg =720x)
+![Desktop Screenshot](./public/screenshot-desktop.jpeg | width=100)
 
 ### Links
 
