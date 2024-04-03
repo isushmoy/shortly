@@ -53,9 +53,7 @@ async function clearItems() {
 </script>
 
 <template>
-  <header>
-    <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
-  </header>
+  <header></header>
   <navbar />
 
   <main class="" data-bs-theme="auto">
@@ -66,8 +64,7 @@ async function clearItems() {
       <img
         class="img-fluid mt-2 px-5 col-lg-7"
         src="./assets/images/illustration-working.svg"
-        alt=""
-        style="position: sticky; left: 0"
+        alt="illustration-working"
       />
       <div class="head-text mx-auto px-1" style="padding-right: 5rem">
         <h1
@@ -89,7 +86,7 @@ async function clearItems() {
         </div>
       </div>
     </div>
-    <div class="middle p-3">
+    <div class="middle p-3" id="features">
       <div class="container">
         <div
           class="bg-shorten card mb-3"
@@ -152,16 +149,24 @@ async function clearItems() {
         <div class="result mb-3">
           <div class="card">
             <div class="card-header">{{ url.longUrl }}</div>
-            <div class="card-body d-lg-flex flex-row justify-content-between">
-              <a class="card-text cyan-" :href="url.shortUrl" target="_blank">
-                {{ url.shortUrl }}
-              </a>
-              <button
-                class="btn cyan-button col-auto mt-3 mt-lg-0"
-                @click="copyUrl(url.shortUrl)"
+            <div class="container">
+              <div
+                class="card-body row d-lg-flex flex-lg-row justify-content-lg-between"
               >
-                Copy
-              </button>
+                <a
+                  class="card-text short-url row col-lg-auto"
+                  :href="url.shortUrl"
+                  target="_blank"
+                >
+                  {{ url.shortUrl }}
+                </a>
+                <button
+                  class="btn cyan-button col-lg-auto mt-2 mt-lg-0"
+                  @click="copyUrl(url.shortUrl)"
+                >
+                  Copy
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -183,7 +188,10 @@ async function clearItems() {
           class="brand-recognition card text-center text-lg-start d-flex align-items-center align-items-lg-start"
         >
           <div class="circle ms-lg-3" style="margin-top: -2rem">
-            <img src="./assets/images/icon-brand-recognition.svg" alt="" />
+            <img
+              src="./assets/images/icon-brand-recognition.svg"
+              alt="brand-recognition"
+            />
           </div>
           <div class="card-body mb-2">
             <h5 class="card-title">Brand Recognition</h5>
@@ -199,7 +207,10 @@ async function clearItems() {
           class="detailed-records card text-center text-lg-start d-flex align-items-center align-items-lg-start"
         >
           <div class="circle ms-lg-3" style="margin-top: -2rem">
-            <img src="./assets/images/icon-detailed-records.svg" alt="" />
+            <img
+              src="./assets/images/icon-detailed-records.svg"
+              alt="detailed-records"
+            />
           </div>
           <div class="card-body mb-2">
             <h5 class="card-title">Detailed Records</h5>
@@ -215,7 +226,10 @@ async function clearItems() {
           class="fully-customizable mb-5 mb-lg-0 card text-center text-lg-start d-flex align-items-center align-items-lg-start"
         >
           <div class="circle ms-lg-3" style="margin-top: -2rem">
-            <img src="./assets/images/icon-fully-customizable.svg" alt="" />
+            <img
+              src="./assets/images/icon-fully-customizable.svg"
+              alt="fully-customizable"
+            />
           </div>
           <div class="card-body mb-2">
             <h5 class="card-title">Fully Customizable</h5>
@@ -234,7 +248,7 @@ async function clearItems() {
     <h2 class="mt-5">Boost your links today</h2>
     <button class="btn cyan-button rounded-pill px-4 mb-5">Get Started</button>
   </div>
-  <div class="bottom">
+  <div class="bottom" id="resources">
     <div
       class="container text-center text-lg-start d-lg-flex justify-content-lg-between p-lg-5"
     >
@@ -242,21 +256,21 @@ async function clearItems() {
         <a href="#" class="text-light">Shortly</a>
       </h2>
       <div class="features mb-4 p-lg-3">
-        <h4 href="">Features</h4>
+        <h4 class="ms-lg-1 mb-lg-3">Features</h4>
 
         <a href=""> Link Shortening </a>
         <a href=""> Branded Links </a>
         <a href=""> Analytics </a>
       </div>
       <div class="resources mb-4 pt-lg-3 pe-lg-3">
-        <h4>Resources</h4>
+        <h4 class="ms-lg-1 mb-lg-3">Resources</h4>
 
         <a href=""> Blog </a>
         <a href=""> Developers </a>
         <a href=""> Support </a>
       </div>
       <div class="company mb-5 pt-lg-3 pe-lg-3">
-        <h4>Company</h4>
+        <h4 class="ms-lg-1 mb-lg-3">Company</h4>
 
         <a href=""> About </a>
         <a href=""> Our Team </a>
@@ -324,6 +338,10 @@ async function clearItems() {
   } */
 }
 
+.short-url:hover {
+  background-color: transparent !important;
+  color: hsl(180, 66%, 39%);
+}
 .statistics .card {
   width: 19rem !important;
   height: 14.5rem;
@@ -384,15 +402,17 @@ async function clearItems() {
 .bottom .text-light {
   font-weight: 600;
 }
-.bottom,
-.bottom h4 {
+.bottom .text-light:hover {
+  color: hsl(180, 66%, 49%) !important;
+}
+.bottom {
   background-color: hsl(260, 8%, 14%);
-  color: #fff;
-  font-size: 1rem;
 }
 
 .bottom h4 {
   font-weight: 600;
+  color: #fff;
+  font-size: 1rem;
 }
 
 .bottom a {
@@ -427,9 +447,7 @@ p {
 .cyan-button:hover {
   background-color: hsl(180, 66%, 39%);
 }
-.cyan-button:active {
-  background-color: hsl(257, 27%, 26%);
-}
+
 .circle {
   background-color: hsl(257, 27%, 26%);
   max-width: fit-content;
