@@ -293,12 +293,6 @@ async function clearItems() {
       </div>
     </div>
   </div>
-  <footer
-    class="attribution text-center text-secondary p-4"
-    style="background-color: hsl(260, 8%, 14%)"
-  >
-    Coded by <a href="https://github.com/SushCod3">Sushmoy</a>.
-  </footer>
 </template>
 
 <style scoped>
