@@ -400,6 +400,7 @@ async function clearItems() {
   color: hsl(180, 66%, 49%) !important;
 }
 .bottom {
+  margin-bottom: 1rem;
   background-color: hsl(260, 8%, 14%);
 }
 
