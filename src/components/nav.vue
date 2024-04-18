@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg mt-3">
     <div class="container">
       <a href="#" class="col-auto navbar-brand ms-2">
         <img class="" src="../assets/images/logo.svg" alt="logo" />
