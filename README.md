@@ -28,6 +28,8 @@ Live Site: [Shortly](https://sushcod3.github.io/shortly/)
 
 ### Technologies Used
 
+- [ClearURI API](https://cleanuri.com/docs)
+- [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/)
 - Vuejs
 - CSS
 - Bootstrap
