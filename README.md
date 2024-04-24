@@ -1,6 +1,6 @@
 # Shortly
 
-This is a user-friendly URL shortening app with mobile-first design. Leveraged CleanURI API, Clipboard API, and advanced CSS for seamless functionality. Additionally, mastered Vue.js for reactive properties and utilized CORS proxy for enhanced API integration.
+Empower users to effortlessly shorten URLs with this user-friendly app. Leveraged CleanURI API, Clipboard API, and advanced CSS for seamless functionality. Additionally, I mastered Vue.js for reactive properties and utilize CORS proxy for enhanced API integration.
 
 Live Site: [Shortly](https://sushcod3.github.io/shortly/)
 
