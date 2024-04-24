@@ -1,7 +1,6 @@
 # Shortly
 
-Welcome to the Shortly!
-This web application allows users to easily shorten long URLs and conveniently copy the shortened URL. Additionally, the app provides the functionality to directly open the shortened URL for testing purposes.
+Shortly, a user-friendly URL shortening app. Implemented mobile-first design, CleanURI API, Clipboard API, and advanced CSS techniques for seamless functionality. Mastered Vue.js for reactive properties and utilized CORS proxy for enhanced API integration.
 
 Live Site: [Shortly](https://sushcod3.github.io/shortly/)
 
