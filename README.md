@@ -2,7 +2,7 @@
 
 This app empowers users to effortlessly shorten URLs with its user-friendly interface. It leverages the CleanURI API, Clipboard API, and advanced CSS for seamless functionality. Additionally, CORS proxy is utilized for enhanced API integration.
 
-Live Site: [Shortly](https://sushmoy.github.io/shortly/)
+Live Site: [Shortly](https://isushmoy.github.io/shortly/)
 
 ## Table of contents
 
